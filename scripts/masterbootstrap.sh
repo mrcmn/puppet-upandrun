@@ -4,7 +4,7 @@ hostname master.vm
 echo '192.168.50.4 master.vm master' >> /etc/hosts
 mkdir -p /etc/puppetlabs/puppet
 echo '*' > /etc/puppetlabs/puppet/autosign.conf
-curl -Lo pe.archive 'https://pm.puppetlabs.com/puppet-enterprise/2017.3.4/puppet-enterprise-2017.3.4-el-7-x86_64.tar.gz'
+curl -Lo pe.archive 'https://pm.puppet.com/cgi-bin/download.cgi?dist=el&rel=7&arch=x86_64&ver=latest'
 tar -xf pe.archive
 cat > pe.conf <<-EOF
 {
@@ -15,6 +15,7 @@ cat > pe.conf <<-EOF
 }
 EOF
 ./puppet-enterprise-*-el-7-x86_64/puppet-enterprise-installer -c pe.conf
-/opt/puppetlabs/bin/puppet apply -e 'include pe_repo::platform::windows_x86_64'
+/opt/puppetlabs/bin/puppet agent -t || true
+/opt/puppetlabs/bin/puppet agent -t || true
 systemctl stop firewalld
 systemctl disable firewalld
