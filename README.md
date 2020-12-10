@@ -11,25 +11,27 @@ Before cloning this repo, you'll have to install both [Vagrant](https://www.vagr
 Once both are installed, you'll be able to do the following steps from your CLI:
 
 ```
-'git clone https://github.com/mrcmn/puppet-upandrun'
+git clone https://github.com/mrcmn/puppet-upandrun
 
-'cd puppet-upandrun'
-
+cd puppet-upandrun
+```
 **vagrant up each vm separately, wait for the previous vm to load fully before bringing up the next one** 
 
-'vagrant up master.vm'
+```
+vagrant up master.vm
 
-'vagrant up linux.vm'
+vagrant up linux.vm
 
-'vagrant up windows.vm'
+vagrant up windows.vm
 
-'vagrant hosts list'
-
+vagrant status
+```
 **ssh into each box individually**
 
-'vagrant ssh master.vm'
-'vagrant ssh linux.vm'
-'vagrant ssh windows.vm'
+```
+vagrant ssh master.vm
+vagrant ssh linux.vm
+vagrant ssh windows.vm
 
 ```
 
