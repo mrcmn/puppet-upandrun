@@ -31,10 +31,8 @@ vagrant status
 ```
 vagrant ssh master.vm
 vagrant ssh linux.vm
-vagrant ssh windows.vm
-
 ```
 
-In order to get into your boxes, you can either ssh in from your command line, or you can use the VirtualBox interface. Windows user and password is 'vagrant' You can read more on Vagrant commands in their [docs](https://www.vagrantup.com/docs/cli/). 
+In order to get into your boxes, you can either ssh in from your command line, or you can use the VirtualBox interface. Use Remote Desktop for Windows, user and password is 'vagrant' You can read more on Vagrant commands in their [docs](https://www.vagrantup.com/docs/cli/). 
 
-You can also see your console in the browser by going to 'https://192.168.50.4'. This should give you a view of the GUI for continued management of your nodes.
+You can also see your console in the browser by going to 'https://192.168.50.4' (admin/puppetlabs). This should give you a view of the GUI for continued management of your nodes.
