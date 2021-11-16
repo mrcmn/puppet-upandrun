@@ -12,6 +12,7 @@ cat > pe.conf <<-EOF
   "puppet_enterprise::puppet_master_host": "%{::trusted.certname}"
   "puppet_enterprise::use_application_services": true
   "puppet_enterprise::profile::master::check_for_updates": false
+  "puppet_enterprise::send_analytics_data": false
 }
 EOF
 ./puppet-enterprise-*-el-7-x86_64/puppet-enterprise-installer -c pe.conf
