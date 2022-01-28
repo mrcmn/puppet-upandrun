@@ -31,4 +31,32 @@ Vagrant.configure("2") do |config|
       v.memory = 2048
     end
   end
+  
+  config.vm.define "gitlab.vm" do |gitlab|
+    gitlab.vm.box = "ubuntu/bionic64"
+    gitlab.vm.hostname = "gitlab.vm"
+    gitlab.vm.network "forwarded_port", guest: 8000, host: 8000
+    gitlab.vm.network "private_network", ip: "192.168.50.7"
+    gitlab.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo apt-get upgrade -y
+      sudo apt-get install -y ca-certificates curl openssh-server
+      # we skip postfix, and don't want emails sent # https://computingforgeeks.com/configure-postfix-send-only-smtp-server-on-ubuntu/
+      curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+      sudo apt-get -y install gitlab-ce
+      sudo apt-get update
+      # set gitlab config as follows:
+      sudo sed -ri "s/^external_url 'http:.*'/external_url 'http:\\/\\/192.168.50.7'/g" /etc/gitlab/gitlab.rb
+      sudo sed -ri "s/^\# gitlab_rails\\['initial_root_password'\\] = \\"password\\"/gitlab_rails\\['initial_root_password'\\] = \\"puppetlabs\\"/g" /etc/gitlab/gitlab.rb
+      sudo gitlab-ctl reconfigure
+      echo "."
+      echo "."
+      echo "."
+      echo "You now can login to http://192.168.50.7 using root/puppetlabs credetials!"
+    SHELL
+    gitlab.vm.provider "virtualbox" do |vb|
+      vb.memory = 4096
+      vb.cpus = 2
+    end
+  end   # of |gitlab|
 end
