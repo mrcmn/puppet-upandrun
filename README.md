@@ -2,7 +2,7 @@
 
 A very simple vagrant environment for getting up and running with Puppet Enterprise. 
 
-This repo provides you with a complete, yet simple environment that consists of a master (CentOS7), as well as a Linux (CentOS7) and Windows VM. 
+This repo provides you with a complete, yet simple environment that consists of a master (CentOS7), as well as a Linux (CentOS7) and Windows VM. If you run this on your local computer, make sure that you have 16 GB RAM minimum.
 
 ## Steps ##
 
