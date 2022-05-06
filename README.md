@@ -6,7 +6,7 @@ This repo provides you with a complete, yet simple environment that consists of 
 
 ## Steps ##
 
-Before cloning this repo, you'll have to install both [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). (In a proxy environment, you probably have to figure out how downloading the installer works, and then the following might help you to figure out how to download images and vagrant plugin, and how to configure the Vagrantfile: [Stackoverflow: How to use vagrant in a proxy environment](https://stackoverflow.com/questions/19872591/how-to-use-vagrant-in-a-proxy-environment)).
+Before cloning this repo, you'll have to install both [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). (In a proxy environment, you probably have to figure out how downloading the installer works, and then the following might help you to figure out how to download images and vagrant plugin, and how to configure the Vagrantfile: [Stackoverflow: How to use vagrant in a proxy environment](https://stackoverflow.com/questions/19872591/how-to-use-vagrant-in-a-proxy-environment). The following assumes that you have no proxy.)
 
 Once both are installed, you'll be able to do the following steps from your CLI:
 
