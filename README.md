@@ -2,11 +2,11 @@
 
 A very simple vagrant environment for getting up and running with Puppet Enterprise. 
 
-This repo provides you with a complete, yet simple environment that consists of a master (CentOS7), as well as a Linux (CentOS7) and Windows VM. If you run this on your local computer, make sure that you have 16 GB RAM minimum.
+This repo provides you with a complete, yet simple environment that consists of a master (CentOS7), as well as a Linux (CentOS7) and Windows VM. If you run this on your local computer, make sure that you have 16 GB (better 32 GB) RAM minimum.
 
 ## Steps ##
 
-Before cloning this repo, you'll have to install both [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). 
+Before cloning this repo, you'll have to install both [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). (In a proxy environment, you probably have to figure out how downloading the installer works, and then the following might help you to figure our how to download images and vagrant plugin, and how to configure the Vagrantfile: [Stackoverflow: How to use vagrant in a proxy environment](https://stackoverflow.com/questions/19872591/how-to-use-vagrant-in-a-proxy-environment)).
 
 Once both are installed, you'll be able to do the following steps from your CLI:
 
