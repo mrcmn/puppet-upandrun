@@ -3,7 +3,7 @@ If you are using Puppet bolt together with the vagrant machines in this repo, yo
 ## See following for ssh config: ##
 ```
 vagrant ssh-config linux.vm
-vagrant ssh-config master.vm
+vagrant ssh-config primary.vm
 ```
 
 ## inventory.yaml ##
@@ -16,7 +16,7 @@ groups:
         config:
           transport: ssh
           ssh:
-            private-key: /Users/<path-to>/puppet-upandrun/.vagrant/machines/master.vm/virtualbox/private_key
+            private-key: /Users/<path-to>/puppet-upandrun/.vagrant/machines/primary.vm/virtualbox/private_key
       - name: nix
         uri: 192.168.50.6
         config:
