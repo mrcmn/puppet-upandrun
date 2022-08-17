@@ -1,11 +1,12 @@
 #!/bin/bash
 set -ex
-hostname master.vm
-echo '192.168.50.4 master.vm master' >> /etc/hosts
+hostname primary.vm
+echo '192.168.50.4 primary.vm primary' >> /etc/hosts
+echo '192.168.50.41 replica.vm replica' >> /etc/hosts
 mkdir -p /etc/puppetlabs/puppet
 echo '*' > /etc/puppetlabs/puppet/autosign.conf
 # curl -Lo pe.archive 'https://pm.puppetlabs.com/puppet-enterprise/2019.8.8/puppet-enterprise-2019.8.8-el-7-x86_64.tar.gz'
-curl -Lo pe.archive 'https://pm.puppetlabs.com/puppet-enterprise/2021.5.0/puppet-enterprise-2021.5.0-el-7-x86_64.tar.gz'
+curl -Lo pe.archive 'https://pm.puppetlabs.com/puppet-enterprise/2021.6.0/puppet-enterprise-2021.6.0-el-7-x86_64.tar.gz'
 tar -xf pe.archive
 cat > pe.conf <<-EOF
 {

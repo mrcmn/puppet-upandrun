@@ -1,15 +1,26 @@
 Vagrant.configure("2") do |config|
 
-  config.vm.define "master.vm" do |master|
-    master.vm.box = "centos/7"
-    master.vm.hostname = "master.vm"
-    master.vm.provision "shell", path: "scripts/masterbootstrap.sh"
-    master.vm.network "private_network", ip: "192.168.50.4"
-    master.vm.provider "virtualbox" do |v|
+  config.vm.define "primary.vm" do |primary|
+    primary.vm.box = "centos/7"
+    primary.vm.hostname = "primary.vm"
+    primary.vm.provision "shell", path: "scripts/primarybootstrap.sh"
+    primary.vm.network "private_network", ip: "192.168.50.4"
+    primary.vm.provider "virtualbox" do |v|
       v.memory = 4096
       v.cpus = 2
     end
   end 
+  
+  config.vm.define "replica.vm" do |replica|
+    replica.vm.box = "centos/7"
+    replica.vm.hostname = "replica.vm"
+    replica.vm.provision "shell", path: "scripts/replicabootstrap.sh"
+    replica.vm.network "private_network", ip: "192.168.50.41"
+    replica.vm.provider "virtualbox" do |v|
+      v.memory = 4096
+      v.cpus = 2
+    end
+  end
 
   config.vm.define "windows.vm" do |windows|
     windows.vm.box = "gusztavvargadr/windows-server"
