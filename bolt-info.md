@@ -1,6 +1,6 @@
 If you are using Puppet bolt together with the vagrant machines in this repo, you can use the following example inventory.yaml file. Create a bolt project directory (within the puppet-upandrun directory), copy the inventory.yaml below and replace the directories for the SSH Keyfiles.
 
-## See following for ssh config: ##
+## Run the following to see ssh config: ##
 ```
 vagrant ssh-config linux.vm
 vagrant ssh-config primary.vm
