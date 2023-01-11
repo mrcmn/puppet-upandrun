@@ -70,4 +70,18 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
     end
   end   # of |gitlab|
+
+  config.vm.define "ldap.vm" do |ldap|
+    ldap.vm.box = "ubuntu/bionic64"
+    ldap.vm.hostname = "ldap.vm"
+    ldap.vm.network "private_network", ip: "192.168.50.8"
+    ldap.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update -y
+      sudo apt-get upgrade -y
+    SHELL
+    ldap.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+      vb.cpus = 1
+    end
+  end   # of |ldap|
 end
