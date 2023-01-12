@@ -7,7 +7,7 @@ __Time to execute__: approx. 45 minutes to 2 hours (depending on performance)
 ---
 ## Synopsis
 
-This hands-on exercise covers installation and configuration of Puppet Enterprise and OpenLDAP. It shows the use of LDAP groups with RBAC in Puppet Enterprise. Two users (Jane and John) will be created in LDAP and can be authenticated and authorized via LDAP and Puppet RBAC to the Puppet Enterprise Console UI. All instructions are simple copy and paste operations with some additional instructions where necessary. For a hands-on experience git, vagrant and virtualbox are required to be installed as a prerequisite. Full internet access (no proxy) is required.
+This hands-on exercise covers installation and configuration of Puppet Enterprise and OpenLDAP. It shows the use of LDAP groups with RBAC in Puppet Enterprise. Two users (Jane and John) will be created in LDAP and can be authenticated and authorized via LDAP and Puppet RBAC to the Puppet Enterprise Console UI. All instructions are simple copy and paste operations with some additional instructions where necessary. For a hands-on experience git, vagrant and virtualbox are required to be installed as a prerequisite. Full internet access (no proxy) and a powerful laptop or desktop pc are required.
 
 ---
 ## Start of the virtual machines
