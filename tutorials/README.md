@@ -10,7 +10,7 @@ List of Puppet Enterprise capability tutorials with hands-on experience. You don
 | 2  | Code-Manager              | Configure Code Manager to update your environments automatically when commits or push happens into the repos.                                                                                                          |
 | 3  | Failover-DR           | Setup a failover replica node for disaster recovery.                         |
 | 4  | Backup-Restore    | Backup and Restore Puppet Enterprise.                                                 |
-| 5  | Node Groups <br>as-Code    | Manage Node Groups as Code.                                             |
+| 5  | [Node Groups <br>as-Code](capabilities/05-nodegroups-ascode.md)    | Manage Node Groups as Code.                                             |
 | 6  | [LDAP](capabilities/06-ldap.md)           | Authenticate and authorize Puppet Enterprise Console users via LDAP.                                     |
 
 ## Further resources:
