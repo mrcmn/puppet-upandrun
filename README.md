@@ -1,4 +1,4 @@
-# upandrun #
+# upandrun
 
 A very simple vagrant environment for getting up and running with Puppet Enterprise. 
 
@@ -6,7 +6,7 @@ This repo provides you with a complete, yet simple environment that consists of 
 
 This is not meant to be a working, fully configured production environment. This repo contains virtual machines for training and demo purposes only!
 
-## Steps ##
+## Basic usage instructions
 
 Before cloning this repo, you'll have to install both [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). (In a proxy environment, you probably have to figure out how downloading the installer works, and then the following might help you to figure out how to download images and vagrant plugin, and how to configure the Vagrantfile: [Stackoverflow: How to use vagrant in a proxy environment](https://stackoverflow.com/questions/19872591/how-to-use-vagrant-in-a-proxy-environment). The following assumes that you have no proxy.)
 
@@ -49,3 +49,9 @@ vagrant ssh gitlab.vm
 In order to get into your boxes, you can either ssh in from your command line, or you can use the VirtualBox interface. Use Remote Desktop for Windows, user and password is 'vagrant' You can read more on Vagrant commands in their [docs](https://www.vagrantup.com/docs/cli/). 
 
 You can also see your console in the browser by going to 'https://192.168.50.4' (admin/puppetlabs). This should give you a view of the GUI for continued management of your nodes. The gitlab instance uses 'http://192.168.50.7' (root/puppetlabs).
+
+## Tutorials
+
+With this repo, I have created few tutorials to try out few Puppet Enterprise features with this repository:
+
+* [Puppet Enterprise hands-on Tutorials](tutorials/README.md)
