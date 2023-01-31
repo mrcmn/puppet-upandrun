@@ -52,6 +52,6 @@ You can also see your console in the browser by going to 'https://192.168.50.4' 
 
 ## Tutorials
 
-With this repo, I have created few tutorials to try out few Puppet Enterprise features with this repository:
+Here are a few tutorials to try out few Puppet Enterprise features with this repository:
 
 * [Puppet Enterprise hands-on Tutorials](tutorials/README.md)
