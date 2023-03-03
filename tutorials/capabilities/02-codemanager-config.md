@@ -126,9 +126,11 @@ git push origin production
 
 __Note__: eval and ssh commands are needed because we did not configure ssh with the key. Both need to be executed again, if the shell is closed and reopened later.
 
+__Note on Security__: Here we assume that we are in a local laptop environment without outside in access. So security settings are very relaxed here. It is strongly recommended to set proper security settings in a "normal" environment!
+
 ### 3. Configure Code Manager
 
-In the Puppet Console UI navigate to __Node groups__ > "PE Master" to the __Classes__ tab. In the class `puppet_enterprise::profile::primary` we add the following parameters:
+In the Puppet Console UI navigate to __Node groups__ > "PE Master" to the __Classes__ tab. In the class `puppet_enterprise::profile::master` we add the following parameters:
 * r10k_private_key = `"/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa"`
 * r10k_remote = `"git@192.168.50.7:root/control-repo.git"`
 * code_manager_auto_configure = `true`
@@ -137,7 +139,7 @@ In the Puppet Console UI navigate to __Node groups__ > "PE Master" to the __Clas
 To immediately apply the changes, we execute:
 
 ```
-[root@peserver ~]# puppet agent -t
+[root@primary ~]# puppet agent -t
 ```
 
 Then we need to create a user `deploy`. Add the new users to the user role __Code Deployers__.
@@ -192,7 +194,7 @@ ls -la /etc/puppetlabs/code/environments/production
 
 Now we still need to configure this update automatically with a webhook. In our environment, we have to make sure that webhooks are allowed to be executed to local addresses. For security reasons this is deactivated by default.
 
-In the gitlab web ui click on the __Admin Area__ in the main menu (or "Burger menu"). Select __Settings__ > __Network__ (/admin/application_settings/network). Activate "Allow requests to the local network from web hooks and services" and save the change.
+In the gitlab web ui click on the __Admin Area__ in the main menu (or "Burger menu"). Select __Settings__ > __Network__ (/admin/application_settings/network). __Activate__ "Allow requests to the local network from web hooks and services", __disable__ "Enforce DNS rebinding attack protection" and save the change.
 
 ![Allow requests to the local network](02-settings-network-outbound.jpeg)
 
@@ -214,7 +216,7 @@ Go to the gitlab web ui to the control repo. Select in the left menu __Settings_
 
 ![Control repo - Settings - Webhooks](02-repo-settings-webhook.jpeg)
 
-Paste the webhook there in the input and __disable__ "Enable SSL verification" and click __Add webhook__. The hook appears below on the page. Click on __Test__ > __Push events__. On success "Hook executed successfully: HTTP 200" is displayed at the top of the page.
+Paste the webhook there in the input, __select__ "Push events" and __disable__ "Enable SSL verification" and click __Add webhook__. The hook appears below on the page. Click on __Test__ > __Push events__. On success "Hook executed successfully: HTTP 200" is displayed at the top of the page.
 
 __Note__: The config of webhooks might slightly differ depending on what git you use. In example for github, you also have to make sure the the webhook uses json as payload data format.
 
