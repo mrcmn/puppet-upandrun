@@ -6,8 +6,7 @@ echo '192.168.50.41 replica.vm replica' >> /etc/hosts
 echo '192.168.50.8 ldap.vm ldap' >> /etc/hosts
 mkdir -p /etc/puppetlabs/puppet
 echo '*' > /etc/puppetlabs/puppet/autosign.conf
-# curl -Lo pe.archive 'https://pm.puppetlabs.com/puppet-enterprise/2019.8.8/puppet-enterprise-2019.8.8-el-7-x86_64.tar.gz'
-curl -Lo pe.archive 'https://pm.puppetlabs.com/puppet-enterprise/2021.7.1/puppet-enterprise-2021.7.1-el-7-x86_64.tar.gz'
+curl -Lo pe.archive 'https://pm.puppetlabs.com/puppet-enterprise/2021.7.2/puppet-enterprise-2021.7.2-el-7-x86_64.tar.gz'
 tar -xf pe.archive
 cat > pe.conf <<-EOF
 {
