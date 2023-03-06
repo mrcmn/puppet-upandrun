@@ -254,6 +254,11 @@ Verified:
 * Configured Code Manager and a webhook.
 * Tested automatic code deployment after updating the repository.
 
+If you don't want to abandone this environment now, you can now proceed with:
+
+* [(3) Failover Disaster Recovery](capabilities/03-failover-dr.md)
+* [(101) Roles and Profiles](capabilities/101-roles-profiles.md) 
+
 ---
 ## Additional information
 
