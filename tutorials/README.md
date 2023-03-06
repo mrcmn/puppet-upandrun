@@ -12,6 +12,7 @@ List of Puppet Enterprise capability tutorials with hands-on experience. You don
 | 4  | [Backup-Restore](capabilities/04-backup.md)    | Backup and Restore Puppet Enterprise.                                                 |
 | 5  | [Node Groups <br>as-Code](capabilities/05-nodegroups-ascode.md)    | Manage Node Groups as Code.                                             |
 | 6  | [LDAP](capabilities/06-ldap.md)           | Authenticate and authorize Puppet Enterprise Console users via LDAP.                                     |
+| 101  | [Roles and Profiles](capabilities/101-roles-profiles.md)           | Roles and Profiles example.                  |
 
 ## Further resources:
 
