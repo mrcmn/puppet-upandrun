@@ -2,7 +2,7 @@
 
 A very simple vagrant environment for getting up and running with Puppet Enterprise. 
 
-This repo provides you with a complete, yet simple environment that consists of a Primary Puppet Enterprise server (CentOS7), as well as a Replica Linux server node, a "normal" Linux agent node (CentOS7), a Windows agent VM, and an Ubuntu Gitlab instance. If you run this on your local computer, make sure that you have 16 GB RAM minimum (better 32 GB or more if you want to use all machines at the same time).
+This repo provides you with a complete, yet simple environment that consists of a Primary Puppet Enterprise server (Ubuntu 22.04), as well as a Replica Linux server node, a "normal" Linux agent node (CentOS7), a Windows agent VM, and an Ubuntu Gitlab instance. If you run this on your local computer, make sure that you have 16 GB RAM minimum (better 32 GB or more if you want to use all machines at the same time).
 
 This is not meant to be a working, fully configured production environment. This repo contains virtual machines for training and demo purposes only!
 
@@ -48,7 +48,7 @@ vagrant ssh gitlab.vm
 
 In order to get into your boxes, you can either ssh in from your command line, or you can use the VirtualBox interface. Use Remote Desktop for Windows, user and password is 'vagrant' You can read more on Vagrant commands in their [docs](https://www.vagrantup.com/docs/cli/). 
 
-You can also see your console in the browser by going to 'https://192.168.50.4' (admin/puppetlabs). This should give you a view of the GUI for continued management of your nodes. The gitlab instance uses 'http://192.168.50.7' (root/puppetlabs).
+You can also see your console in the browser by going to 'https://192.168.50.4' (admin/Puppetlabs+1). This should give you a view of the GUI for continued management of your nodes. The gitlab instance uses 'http://192.168.50.7' (root/puppetlabs).
 
 ## Tutorials
 

@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define "primary.vm" do |primary|
-    primary.vm.box = "ubuntu/focal64" # version 20
+    primary.vm.box = "ubuntu/jammy64" # version 22
     primary.vm.hostname = "primary.vm"
     primary.vm.provision "shell", path: "scripts/primarybootstrapubu.sh"
     primary.vm.network "private_network", ip: "192.168.50.4"
@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   end 
   
   config.vm.define "replica.vm" do |replica|
-    replica.vm.box = "ubuntu/focal64" # version 20
+    replica.vm.box = "ubuntu/jammy64" # version 22
     replica.vm.hostname = "replica.vm"
     replica.vm.provision "shell", path: "scripts/replicabootstrapubu.sh"
     replica.vm.network "private_network", ip: "192.168.50.41"
