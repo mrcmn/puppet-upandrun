@@ -2,7 +2,7 @@
 
 A very simple vagrant environment for getting up and running with Puppet Enterprise. 
 
-This repo provides you with a complete, yet simple environment that consists of a Primary Puppet Enterprise server (Ubuntu 22.04), as well as a Replica Linux server node, a "normal" Linux agent node (CentOS7), a Windows agent VM, and an Ubuntu Gitlab instance. If you run this on your local computer, make sure that you have 16 GB RAM minimum (better 32 GB or more if you want to use all machines at the same time).
+This repo provides you with a complete, yet simple environment that consists of a Primary Puppet Enterprise server (Ubuntu 22.04), as well as a Replica Linux server node, a "normal" Linux agent node (Ubuntu), a Windows agent VM, and an Ubuntu Gitlab instance. If you run this on your local computer, make sure that you have 16 GB RAM minimum (better 32 GB or more if you want to use all machines at the same time).
 
 This is not meant to be a working, fully configured production environment. This repo contains virtual machines for training and demo purposes only!
 
@@ -22,7 +22,7 @@ cd puppet-upandrun
 ```
 vagrant up primary.vm
 
-vagrant up linux.vm
+vagrant up ubuntu.vm
 
 vagrant up windows.vm
 
@@ -42,7 +42,7 @@ vagrant up replica.vm
 ```
 vagrant ssh primary.vm
 vagrant ssh replica.vm
-vagrant ssh linux.vm
+vagrant ssh ubuntu.vm
 vagrant ssh gitlab.vm
 ```
 
