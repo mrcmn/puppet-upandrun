@@ -33,15 +33,15 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "linux.vm" do |linux|
-    linux.vm.box = "centos/7"
-    linux.vm.hostname = "linux.vm"
-    linux.vm.network "private_network", ip: "192.168.50.6"
-    linux.vm.provision "shell", path: "scripts/linux_agent.sh"
-    linux.vm.provider "virtualbox" do |v|
+  config.vm.define "ubuntu.vm" do |ubuntu|
+    ubuntu.vm.box = "ubuntu/jammy64"
+    ubuntu.vm.hostname = "ubuntu.vm"
+    ubuntu.vm.network "private_network", ip: "192.168.50.6"
+    ubuntu.vm.provision "shell", path: "scripts/ubuntu_agent.sh"
+    ubuntu.vm.provider "virtualbox" do |v|
       v.memory = 2048
     end
-  end
+  end   # of |ubuntu|
   
   config.vm.define "gitlab.vm" do |gitlab|
     gitlab.vm.box = "ubuntu/bionic64"
