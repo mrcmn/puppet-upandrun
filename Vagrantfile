@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
   end   # of |ubuntu|
   
   config.vm.define "gitlab.vm" do |gitlab|
-    gitlab.vm.box = "ubuntu/bionic64"
+    gitlab.vm.box = "ubuntu/jammy64" # version 22
     gitlab.vm.hostname = "gitlab.vm"
     gitlab.vm.network "forwarded_port", guest: 8000, host: 8000
     gitlab.vm.network "private_network", ip: "192.168.50.7"
@@ -66,7 +66,7 @@ Vagrant.configure("2") do |config|
       echo "You now can login to http://192.168.50.7 using root/puppetlabs credetials!"
     SHELL
     gitlab.vm.provider "virtualbox" do |vb|
-      vb.memory = 4096
+      vb.memory = 6144
       vb.cpus = 2
     end
   end   # of |gitlab|
