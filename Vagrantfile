@@ -55,15 +55,14 @@ Vagrant.configure("2") do |config|
       # we skip postfix, and don't want emails sent # https://computingforgeeks.com/configure-postfix-send-only-smtp-server-on-ubuntu/
       curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
       sudo apt-get -y install gitlab-ce
-      sudo apt-get update
       # set gitlab config as follows:
       sudo sed -ri "s/^external_url 'http:.*'/external_url 'http:\\/\\/192.168.50.7'/g" /etc/gitlab/gitlab.rb
-      sudo sed -ri "s/^\# gitlab_rails\\['initial_root_password'\\] = \\"password\\"/gitlab_rails\\['initial_root_password'\\] = \\"puppetlabs\\"/g" /etc/gitlab/gitlab.rb
+      sudo sed -ri "s/^\# gitlab_rails\\['initial_root_password'\\] = \\"password\\"/gitlab_rails\\['initial_root_password'\\] = \\"Puppetlabs+1\\"/g" /etc/gitlab/gitlab.rb
       sudo gitlab-ctl reconfigure
       echo "."
       echo "."
       echo "."
-      echo "You now can login to http://192.168.50.7 using root/puppetlabs credetials!"
+      echo "You now can login to http://192.168.50.7 using root/Puppetlabs+1 credetials!"
     SHELL
     gitlab.vm.provider "virtualbox" do |vb|
       vb.memory = 6144
