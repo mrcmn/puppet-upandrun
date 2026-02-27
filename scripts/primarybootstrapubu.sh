@@ -2,8 +2,9 @@
 set -ex
 ufw disable
 hostnamectl set-hostname primary.vm
-echo '192.168.50.4 primary.vm primary' >> /etc/hosts
+sed -ri "s/127.0.2.1 .*/192.168.50.4 primary.vm primary/g" /etc/hosts
 echo '192.168.50.41 replica.vm replica' >> /etc/hosts
+echo '192.168.50.7 gitlab.vm gitlab' >> /etc/hosts
 echo '192.168.50.8 ldap.vm ldap' >> /etc/hosts
 mkdir -p /etc/puppetlabs/puppet
 echo '*' > /etc/puppetlabs/puppet/autosign.conf
