@@ -10,6 +10,8 @@ This is not meant to be a working, fully configured production environment. This
 
 Before cloning this repo, you'll have to install both [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). (In a proxy environment, you probably have to figure out how downloading the installer works, and then the following might help you to figure out how to download images and vagrant plugin, and how to configure the Vagrantfile: [Stackoverflow: How to use vagrant in a proxy environment](https://stackoverflow.com/questions/19872591/how-to-use-vagrant-in-a-proxy-environment). The following assumes that you have no proxy.)
 
+__Note__: I have noticed that VM creation or startup or just while normal usage sometimes hangs somewhere. I don't know the reason or the fix, but it seems to be random. In fact it is a 100% working workaround to have the VirtualBox preview console open. You still can work with Putty and when something hangs then just click on VirtualBox on the hanging machine to activate the preview console. This only seems to happen in combination with vagrant. It is bothering for sure, so if you know the fix please let me know.
+
 Once both are installed, you'll be able to do the following steps from your CLI:
 
 ```
