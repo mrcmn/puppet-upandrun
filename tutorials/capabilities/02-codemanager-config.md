@@ -130,9 +130,28 @@ __Note on Security__: Here we assume that we are in a local laptop environment w
 
 ### 3. Configure Code Manager
 
+Now, we assume that we never added any host to the known_hosts file before we ran the above `ssh -T ...` command. So now we have one (our gitlab vm) added to the known_hosts file. It should now have like three entries:
+
+```
+root@primary:/home/vagrant# cat ~/.ssh/known_hosts
+|1|ArbfE0FRBCpEMgOr+2vCP/pK6cY=|R3vUd7QYuYBhd4EvC1rSP3pp6zE= ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmJpOFtFUnH7GeZzx+oiFHXCWJi1/0gsOPiOQguY5od
+|1|VAUPr0FhDNcCDGF+mv44CHYHCOI=|xyPUHD7qlz1kaY89xJiHycx0lCw= ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC81g56G+fd+/SBHnvSYf0g31Cs52DepunFkLfsFDv2IiMdTFBGHLxSDwWhtoAW78wsY6mPMRHik+/swmfHW/TYzPhZHaN5sVAbwN4c/4iQ3Yvbk/v3z9xswB4iB4f6vz7h7LCAIa1UH/lVc864kntpg6PKaZmMB4hDGuo93EN6Ex9NNsrNue/vQMZAtaF7FXOoUTpx3CjnzqNEMXfI4F0luIOzwlssiz7FX00j00NrBPTWzBMtcHf3xZdRoJoYMdgpFQlEa/kR2FgQbZGO4Rogh/pbT2y94cAV1EzH+uL9R+7qvXf4VWDoZSjnLMt/g8vp7tbamlHVka4Jcly/Coo4E3zh8L9jkl1qgI+8VGWt8PGd42UZpYIIfD1mpEmy1cUN5d9Q6r4xEw3Mnkdb37Hl8j2M49RFrysySJEIEDmo+0YIs5nEFIdtlZCtdyJLrUfxAYMutAC5m297kPd7EukEecbtMu/j5i7WSX07o7W0aEQGHEiF46+XqI2TVIqc6OM=
+|1|Mph2a/cPL0F8lQpx23epQvJ3nCM=|XJ+JhmDDFNeUnl/vClk2sB+lG/A= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKd99mFWPmJwqFoRtBqzVxubGkLOcJ9vvpRcQQngCQi5ZAsL57ihwEjr/q7og/lrJ5yOnFC1Li83boC5S3Q0jOw=
+root@primary:/home/vagrant# 
+```
+
+It is perhaps not very easy to see, but we will take the first two entries and add them to the known_hosts config in Puppet Enterprise:
+
+```
+r10k_known_hosts	=	[{"name":"gitlab.vm","type":"ed25519","key":"AAAAC3NzaC1lZDI1NTE5AAAAIJmJpOFtFUnH7GeZzx+oiFHXCWJi1/0gsOPiOQguY5od"},{"name":"gitlab.vm","type":"rsa","key":"AAAAB3NzaC1yc2EAAAADAQABAAABgQC81g56G+fd+/SBHnvSYf0g31Cs52DepunFkLfsFDv2IiMdTFBGHLxSDwWhtoAW78wsY6mPMRHik+/swmfHW/TYzPhZHaN5sVAbwN4c/4iQ3Yvbk/v3z9xswB4iB4f6vz7h7LCAIa1UH/lVc864kntpg6PKaZmMB4hDGuo93EN6Ex9NNsrNue/vQMZAtaF7FXOoUTpx3CjnzqNEMXfI4F0luIOzwlssiz7FX00j00NrBPTWzBMtcHf3xZdRoJoYMdgpFQlEa/kR2FgQbZGO4Rogh/pbT2y94cAV1EzH+uL9R+7qvXf4VWDoZSjnLMt/g8vp7tbamlHVka4Jcly/Coo4E3zh8L9jkl1qgI+8VGWt8PGd42UZpYIIfD1mpEmy1cUN5d9Q6r4xEw3Mnkdb37Hl8j2M49RFrysySJEIEDmo+0YIs5nEFIdtlZCtdyJLrUfxAYMutAC5m297kPd7EukEecbtMu/j5i7WSX07o7W0aEQGHEiF46+XqI2TVIqc6OM="}]
+```
+
+with the above prepared (your values will be different!), we can do the following:
+
 In the Puppet Console UI navigate to __Node groups__ > "PE Master" to the __Classes__ tab. In the class `puppet_enterprise::profile::master` we add the following parameters:
+* r10k_known_hosts	=	`[{"name":"gitlab.vm","type":"ed25519","key":"AAAAC3NzaC1lZDI1NTE5AAAAIJmJpOFtFUnH7GeZzx+oiFHXCWJi1/0gsOPiOQguY5od"},{"name":"gitlab.vm","type":"rsa","key":"AAAAB3NzaC1yc2EAAAADAQABAAABgQC81g56G+fd+/SBHnvSYf0g31Cs52DepunFkLfsFDv2IiMdTFBGHLxSDwWhtoAW78wsY6mPMRHik+/swmfHW/TYzPhZHaN5sVAbwN4c/4iQ3Yvbk/v3z9xswB4iB4f6vz7h7LCAIa1UH/lVc864kntpg6PKaZmMB4hDGuo93EN6Ex9NNsrNue/vQMZAtaF7FXOoUTpx3CjnzqNEMXfI4F0luIOzwlssiz7FX00j00NrBPTWzBMtcHf3xZdRoJoYMdgpFQlEa/kR2FgQbZGO4Rogh/pbT2y94cAV1EzH+uL9R+7qvXf4VWDoZSjnLMt/g8vp7tbamlHVka4Jcly/Coo4E3zh8L9jkl1qgI+8VGWt8PGd42UZpYIIfD1mpEmy1cUN5d9Q6r4xEw3Mnkdb37Hl8j2M49RFrysySJEIEDmo+0YIs5nEFIdtlZCtdyJLrUfxAYMutAC5m297kPd7EukEecbtMu/j5i7WSX07o7W0aEQGHEiF46+XqI2TVIqc6OM="}]`
 * r10k_private_key = `"/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa"`
-* r10k_remote = `"git@192.168.50.7:root/control-repo.git"`
+* r10k_remote = `"git@gitlab.vm:root/control-repo.git"`
 * code_manager_auto_configure = `true`
 * replication_mode = `"none"`
 
@@ -146,7 +165,7 @@ Then we need to create a user `deploy`. Add the new users to the user role __Cod
 
 ![Add deploy user](02-add-deploy-user.jpeg)
 
-In the settings for the deploy user click on the __Generate password reset__ link in the upper right (as seen in the screenshot above). Use the link in a different browser or a new private browser window and set the password to `puppetlabs`.
+In the settings for the deploy user click on the __Generate password reset__ link in the upper right (as seen in the screenshot above). Use the link in a different browser or a new private browser window and set the password to `Puppetlabs+1`.
 
 Now the deploy user needs a token. In the shell:
 
@@ -154,7 +173,7 @@ Now the deploy user needs a token. In the shell:
 [root@primary control-repo]# puppet access login --lifetime 360d
 Enter your Puppet Enterprise credentials.
 Username: deploy
-Password: puppetlabs
+Password: Puppetlabs+1
 
 Access token saved to: /root/.puppetlabs/token
 
@@ -187,7 +206,7 @@ puppet-code deploy production --wait
 After few moments the files on the Puppet Enterprise primary server should be updated with the content of the template control repo from our repo in the gitlab.vm:
 
 ```
-ls -la /etc/puppetlabs/code/environments/production
+ls -la /etc/puppetlabs/code-staging/environments/production
 ```
 
 ### 4. Webhook in Gitlab
@@ -240,7 +259,7 @@ git push origin production
 ... we can see after few moments, that the content of the production environment of Puppet Enterprise has been updated:
 
 ```
-cat /etc/puppetlabs/code/environments/production/Puppetfile
+cat /etc/puppetlabs/code-staging/environments/production/Puppetfile
 ```
 
 Verify that the above file contains your changes. Done!
